@@ -1,11 +1,12 @@
 import clsx from "clsx";
 import { Suspense } from "react";
 
-import { getCollections } from "lib/shopify";
+import { getCommerce } from "@/lib/commerce";
 import FilterList from "./filter";
 
 async function CollectionList() {
-  const collections = await getCollections();
+  const commerce = await getCommerce();
+  const collections = await commerce.getCollections();
   return <FilterList list={collections} title="Collections" />;
 }
 

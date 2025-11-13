@@ -1,4 +1,4 @@
-import { getCollection, getCollectionProducts } from "lib/shopify";
+import { getCommerce } from "@/lib/commerce";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -10,7 +10,8 @@ export async function generateMetadata(props: {
   params: Promise<{ collection: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const collection = await getCollection(params.collection);
+  const commerce = await getCommerce();
+  const collection = await commerce.getCollection(params.collection);
 
   if (!collection) return notFound();
 
@@ -32,7 +33,8 @@ export default async function CategoryPage(props: {
   const { sort } = searchParams as { [key: string]: string };
   const { sortKey, reverse } =
     sorting.find((item) => item.slug === sort) || defaultSort;
-  const products = await getCollectionProducts({
+  const commerce = await getCommerce();
+  const products = await commerce.getCollectionProducts({
     collection: params.collection,
     sortKey,
     reverse,

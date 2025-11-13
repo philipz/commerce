@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { getCart } from "lib/shopify";
+import { getCommerce } from "@/lib/commerce";
 import { createOrderFromCart } from "lib/user/order-actions";
 import { clearSavedCart } from "components/cart/cart-sync";
 import { NextResponse } from "next/server";
@@ -13,7 +13,8 @@ export async function POST() {
     }
 
     // Get current cart
-    const cart = await getCart();
+    const commerce = await getCommerce();
+    const cart = await commerce.getCart();
 
     if (!cart || cart.lines.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });

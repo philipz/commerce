@@ -1,6 +1,6 @@
 import { GridTileImage } from "components/grid/tile";
-import { getCollectionProducts } from "lib/shopify";
-import type { Product } from "lib/shopify/types";
+import { getCommerce } from "@/lib/commerce";
+import type { Product } from "lib/commerce/types";
 import Link from "next/link";
 
 function ThreeItemGridItem({
@@ -49,7 +49,8 @@ function ThreeItemGridItem({
 
 export async function ThreeItemGrid() {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const homepageItems = await getCollectionProducts({
+  const commerce = await getCommerce();
+  const homepageItems = await commerce.getCollectionProducts({
     collection: "hidden-homepage-featured-items",
   });
 

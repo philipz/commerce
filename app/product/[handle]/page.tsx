@@ -7,8 +7,8 @@ import { Gallery } from "components/product/gallery";
 import { ProductProvider } from "components/product/product-context";
 import { ProductDescription } from "components/product/product-description";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
-import { getProduct, getProductRecommendations } from "lib/shopify";
-import { Image } from "lib/shopify/types";
+import { getCommerce } from "@/lib/commerce";
+import type { Image, Product } from "lib/commerce/types";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -16,7 +16,8 @@ export async function generateMetadata(props: {
   params: Promise<{ handle: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const product = await getProduct(params.handle);
+  const commerce = await getCommerce();
+  const product = await commerce.getProduct(params.handle);
 
   if (!product) return notFound();
 
@@ -53,9 +54,11 @@ export default async function ProductPage(props: {
   params: Promise<{ handle: string }>;
 }) {
   const params = await props.params;
-  const product = await getProduct(params.handle);
+  const commerce = await getCommerce();
+  const product = await commerce.getProduct(params.handle);
 
   if (!product) return notFound();
+  const relatedProductsPromise = commerce.getProductRecommendations(product.id);
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -105,15 +108,19 @@ export default async function ProductPage(props: {
             </Suspense>
           </div>
         </div>
-        <RelatedProducts id={product.id} />
+        <RelatedProducts productsPromise={relatedProductsPromise} />
       </div>
       <Footer />
     </ProductProvider>
   );
 }
 
-async function RelatedProducts({ id }: { id: string }) {
-  const relatedProducts = await getProductRecommendations(id);
+async function RelatedProducts({
+  productsPromise,
+}: {
+  productsPromise: Promise<Product[]>;
+}) {
+  const relatedProducts = await productsPromise;
 
   if (!relatedProducts.length) return null;
 

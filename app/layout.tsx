@@ -3,7 +3,7 @@ import { CartProvider } from "components/cart/cart-context";
 import { Navbar } from "components/layout/navbar";
 import { WelcomeToast } from "components/welcome-toast";
 import { GeistSans } from "geist/font/sans";
-import { getCart } from "lib/shopify";
+import { getCommerce } from "@/lib/commerce";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -29,7 +29,8 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   // Don't await the fetch, pass the Promise to the context provider
-  const cart = getCart();
+  const commerce = await getCommerce();
+  const cart = commerce.getCart();
 
   return (
     <html lang="en" className={GeistSans.variable}>

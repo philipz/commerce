@@ -1,13 +1,7 @@
 "use server";
 
 import { TAGS } from "lib/constants";
-import {
-  addToCart,
-  createCart,
-  getCart,
-  removeFromCart,
-  updateCart,
-} from "lib/shopify";
+import { getCommerce } from "@/lib/commerce";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -22,11 +16,12 @@ export async function addItem(
   }
 
   try {
-    await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
+    const commerce = await getCommerce();
+    await commerce.addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
     revalidateTag(TAGS.cart);
 
     // Sync to user's saved cart if authenticated
-    const cart = await getCart();
+    const cart = await commerce.getCart();
     if (cart) {
       await syncCartToUser(cart);
     }
@@ -37,7 +32,8 @@ export async function addItem(
 
 export async function removeItem(prevState: any, merchandiseId: string) {
   try {
-    const cart = await getCart();
+    const commerce = await getCommerce();
+    const cart = await commerce.getCart();
 
     if (!cart) {
       return "Error fetching cart";
@@ -48,11 +44,11 @@ export async function removeItem(prevState: any, merchandiseId: string) {
     );
 
     if (lineItem && lineItem.id) {
-      await removeFromCart([lineItem.id]);
+      await commerce.removeFromCart([lineItem.id]);
       revalidateTag(TAGS.cart);
 
       // Sync to user's saved cart if authenticated
-      const updatedCart = await getCart();
+      const updatedCart = await commerce.getCart();
       if (updatedCart) {
         await syncCartToUser(updatedCart);
       }
@@ -74,7 +70,8 @@ export async function updateItemQuantity(
   const { merchandiseId, quantity } = payload;
 
   try {
-    const cart = await getCart();
+    const commerce = await getCommerce();
+    const cart = await commerce.getCart();
 
     if (!cart) {
       return "Error fetching cart";
@@ -86,9 +83,9 @@ export async function updateItemQuantity(
 
     if (lineItem && lineItem.id) {
       if (quantity === 0) {
-        await removeFromCart([lineItem.id]);
+        await commerce.removeFromCart([lineItem.id]);
       } else {
-        await updateCart([
+        await commerce.updateCart([
           {
             id: lineItem.id,
             merchandiseId,
@@ -98,13 +95,13 @@ export async function updateItemQuantity(
       }
     } else if (quantity > 0) {
       // If the item doesn't exist in the cart and quantity > 0, add it
-      await addToCart([{ merchandiseId, quantity }]);
+      await commerce.addToCart([{ merchandiseId, quantity }]);
     }
 
     revalidateTag(TAGS.cart);
 
     // Sync to user's saved cart if authenticated
-    const updatedCart = await getCart();
+    const updatedCart = await commerce.getCart();
     if (updatedCart) {
       await syncCartToUser(updatedCart);
     }
@@ -115,11 +112,13 @@ export async function updateItemQuantity(
 }
 
 export async function redirectToCheckout() {
-  let cart = await getCart();
+  const commerce = await getCommerce();
+  let cart = await commerce.getCart();
   redirect(cart!.checkoutUrl);
 }
 
 export async function createCartAndSetCookie() {
-  let cart = await createCart();
+  const commerce = await getCommerce();
+  let cart = await commerce.createCart();
   (await cookies()).set("cartId", cart.id!);
 }

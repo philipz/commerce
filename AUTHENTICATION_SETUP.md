@@ -212,4 +212,4 @@ Consider these improvements for production:
 4. **Two-Factor Authentication** - Add 2FA for enhanced security
 5. **Social Login Options** - Add Facebook, Apple, or other providers
 6. **Profile Pictures** - Allow users to upload custom avatars
-7. **Webhook Integration** - Integrate with Shopify webhooks for real-time order updates
+7. **Webhook Integration** - Integrate with commerce provider webhooks (e.g., Shopify webhooks) for real-time order updates. Note: The specific webhook configuration depends on the `COMMERCE_PROVIDER` in use.

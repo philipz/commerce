@@ -14,7 +14,7 @@ This template uses React Server Components, Server Actions, `Suspense`, `useOpti
 
 Vercel will only be actively maintaining a Shopify version [as outlined in our vision and strategy for Next.js Commerce](https://github.com/vercel/commerce/pull/966).
 
-Vercel is happy to partner and work with any commerce provider to help them get a similar template up and running and listed below. Alternative providers should be able to fork this repository and swap out the `lib/shopify` file with their own implementation while leaving the rest of the template mostly unchanged.
+Vercel is happy to partner and work with any commerce provider to help them get a similar template up and running and listed below. Alternative providers can now plug their implementation into the `lib/commerce/providers/` directory (see the [Commerce Providers](#commerce-providers) section) while leaving the rest of the template mostly unchanged.
 
 - Shopify (this repository)
 - [BigCommerce](https://github.com/bigcommerce/nextjs-commerce) ([Demo](https://next-commerce-v2.vercel.app/))
@@ -30,6 +30,42 @@ Vercel is happy to partner and work with any commerce provider to help them get 
 - [Fourthwall](https://github.com/FourthwallHQ/vercel-commerce) ([Demo](https://vercel-storefront.fourthwall.app/))
 
 > Note: Providers, if you are looking to use similar products for your demo, you can [download these assets](https://drive.google.com/file/d/1q_bKerjrwZgHwCw0ovfUMW6He9VtepO_/view?usp=sharing).
+
+## Commerce Providers
+
+This project now supports a pluggable commerce provider architecture, allowing you to easily switch between different commerce backends (e.g., Shopify, Mock) or integrate your own custom provider.
+
+### How to Configure
+
+The active commerce provider is determined by the `COMMERCE_PROVIDER` environment variable.
+
+-   **`COMMERCE_PROVIDER=shopify`**: Connects to a Shopify store. Requires additional Shopify-specific environment variables.
+-   **`COMMERCE_PROVIDER=mock`**: Uses an in-memory mock provider for local development and testing. No external environment variables are required for the mock provider.
+
+**Example `.env` configuration for Shopify:**
+
+```dotenv
+COMMERCE_PROVIDER=shopify
+SHOPIFY_STORE_DOMAIN="https://your-store-name.myshopify.com"
+SHOPIFY_STOREFRONT_ACCESS_TOKEN="shpat_YOUR_STOREFRONT_ACCESS_TOKEN"
+SHOPIFY_REVALIDATION_SECRET="YOUR_STRONG_RANDOM_SECRET"
+```
+
+**Quick Start with Mock Provider:**
+
+To run the application locally without any external commerce backend, simply ensure `COMMERCE_PROVIDER` is unset or set to `mock`.
+
+```dotenv
+# .env (or remove COMMERCE_PROVIDER if it exists)
+COMMERCE_PROVIDER=mock
+```
+
+### Provider Documentation
+
+For detailed setup instructions and capabilities of each provider, refer to their respective README files:
+
+-   [Shopify Provider Documentation](./lib/commerce/providers/shopify/README.md)
+-   [Mock Provider Documentation](./lib/commerce/providers/mock/README.md)
 
 ## Integrations
 
@@ -47,18 +83,24 @@ Integrations enable upgraded or additional functionality for Next.js Commerce
 
 You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
 
+To run the application with the **Mock Provider** (no external dependencies required):
+
+1.  Ensure `COMMERCE_PROVIDER` is unset or set to `mock` in your `.env` file.
+2.  Run `pnpm install`
+3.  Run `pnpm dev`
+
+Your app should now be running on [localhost:3000](http://localhost:3000/) with mock data.
+
+To run the application with the **Shopify Provider**:
+
+1.  Set `COMMERCE_PROVIDER=shopify` and configure the required Shopify environment variables (see [Shopify Provider Documentation](./lib/commerce/providers/shopify/README.md)).
+2.  Install Vercel CLI: `npm i -g vercel`
+3.  Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
+4.  Download your environment variables: `vercel env pull`
+5.  Run `pnpm install`
+6.  Run `pnpm dev`
+
 > Note: You should not commit your `.env` file or it will expose secrets that will allow others to control your Shopify store.
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 <details>
   <summary>Expand if you work at Vercel and want to run locally and / or contribute</summary>

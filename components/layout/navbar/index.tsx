@@ -1,7 +1,6 @@
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
-import { Menu } from "lib/shopify/types";
+import { getCommerce, Menu } from "@/lib/commerce";
 import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
@@ -11,7 +10,8 @@ import { AccountButton } from "./account-button";
 const { SITE_NAME } = process.env;
 
 export async function Navbar() {
-  const menu = await getMenu("next-js-frontend-header-menu");
+  const commerce = await getCommerce();
+  const menu = await commerce.getMenu("next-js-frontend-header-menu");
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">

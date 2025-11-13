@@ -1,5 +1,5 @@
-import { getCollections, getPages, getProducts } from "lib/shopify";
-import { baseUrl, validateEnvironmentVariables } from "lib/utils";
+import { getCommerce } from "@/lib/commerce";
+import { baseUrl } from "lib/utils";
 import { MetadataRoute } from "next";
 
 type Route = {
@@ -10,28 +10,28 @@ type Route = {
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  validateEnvironmentVariables();
-
   const routesMap = [""].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
   }));
 
-  const collectionsPromise = getCollections().then((collections) =>
+  const commerce = await getCommerce();
+
+  const collectionsPromise = commerce.getCollections().then((collections) =>
     collections.map((collection) => ({
       url: `${baseUrl}${collection.path}`,
       lastModified: collection.updatedAt,
     })),
   );
 
-  const productsPromise = getProducts({}).then((products) =>
+  const productsPromise = commerce.getProducts({}).then((products) =>
     products.map((product) => ({
       url: `${baseUrl}/product/${product.handle}`,
       lastModified: product.updatedAt,
     })),
   );
 
-  const pagesPromise = getPages().then((pages) =>
+  const pagesPromise = commerce.getPages().then((pages) =>
     pages.map((page) => ({
       url: `${baseUrl}/${page.handle}`,
       lastModified: page.updatedAt,

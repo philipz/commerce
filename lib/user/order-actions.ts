@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
-import { Cart } from "lib/shopify/types";
+import type { Cart } from "lib/commerce/types";
 import { saveOrder } from "./storage";
 import { Order, OrderItem } from "./types";
 import { getShippingAddresses, getBillingAddresses } from "./storage";

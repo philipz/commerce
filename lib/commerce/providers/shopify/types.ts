@@ -1,99 +1,19 @@
-export type Maybe<T> = T | null;
+import type {
+  CartItem,
+  Connection,
+  Image,
+  Money,
+  Page,
+  ProductOption,
+  ProductVariant,
+  SEO,
+} from "lib/commerce/types";
 
-export type Connection<T> = {
-  edges: Array<Edge<T>>;
-};
-
-export type Edge<T> = {
-  node: T;
-};
-
-export type Cart = Omit<ShopifyCart, "lines"> & {
-  lines: CartItem[];
-};
-
-export type CartProduct = {
-  id: string;
-  handle: string;
-  title: string;
-  featuredImage: Image;
-};
-
-export type CartItem = {
-  id: string | undefined;
-  quantity: number;
-  cost: {
-    totalAmount: Money;
-  };
-  merchandise: {
-    id: string;
-    title: string;
-    selectedOptions: {
-      name: string;
-      value: string;
-    }[];
-    product: CartProduct;
-  };
-};
-
-export type Collection = ShopifyCollection & {
-  path: string;
-};
-
-export type Image = {
-  url: string;
-  altText: string;
-  width: number;
-  height: number;
-};
-
-export type Menu = {
-  title: string;
-  path: string;
-};
-
-export type Money = {
-  amount: string;
-  currencyCode: string;
-};
-
-export type Page = {
-  id: string;
-  title: string;
-  handle: string;
-  body: string;
-  bodySummary: string;
-  seo?: SEO;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
-  variants: ProductVariant[];
-  images: Image[];
-};
-
-export type ProductOption = {
-  id: string;
-  name: string;
-  values: string[];
-};
-
-export type ProductVariant = {
-  id: string;
-  title: string;
-  availableForSale: boolean;
-  selectedOptions: {
-    name: string;
-    value: string;
-  }[];
-  price: Money;
-};
-
-export type SEO = {
-  title: string;
-  description: string;
-};
+/**
+ * Shopify-specific types for GraphQL API responses.
+ * These types represent the raw structure returned by Shopify's Storefront API
+ * before being reshaped into generic commerce types.
+ */
 
 export type ShopifyCart = {
   id: string | undefined;
@@ -134,6 +54,8 @@ export type ShopifyProduct = {
   tags: string[];
   updatedAt: string;
 };
+
+// GraphQL Operation Types
 
 export type ShopifyCartOperation = {
   data: {
