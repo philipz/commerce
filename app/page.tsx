@@ -13,8 +13,10 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <ThreeItemGrid />
-      <Carousel />
+      <div className="space-y-12">
+        <ThreeItemGrid />
+        <Carousel />
+      </div>
       <Footer />
     </>
   );

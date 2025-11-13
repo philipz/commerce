@@ -1,7 +1,15 @@
 import type { NextRequest, NextResponse } from "next/server";
 import type { CommerceProvider } from "../../provider.interface";
 import type { Cart, Collection, Menu, Page, Product } from "../../types";
-import { mockCart, mockCollections, mockMenus, mockPages, mockProducts } from "./data";
+import {
+  homepageCarouselHandles,
+  homepageFeaturedHandles,
+  mockCart,
+  mockCollections,
+  mockMenus,
+  mockPages,
+  mockProducts,
+} from "./data";
 
 /**
  * In-memory cart storage for the mock provider.
@@ -13,6 +21,11 @@ const cartStorage = new Map<string, Cart>();
  * Simulate async API delay for realistic behavior.
  */
 const delay = (ms: number = 50) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const selectProductsByHandle = (handles: string[]) =>
+  handles
+    .map((handle) => mockProducts.find((product) => product.handle === handle))
+    .filter((product): product is Product => Boolean(product));
 
 /**
  * Mock commerce provider for local development and testing.
@@ -354,6 +367,12 @@ const mockProvider: CommerceProvider = {
 
     // Filter by collection
     switch (options.collection) {
+      case "hidden-homepage-featured-items":
+        products = selectProductsByHandle(homepageFeaturedHandles);
+        break;
+      case "hidden-homepage-carousel":
+        products = selectProductsByHandle(homepageCarouselHandles);
+        break;
       case "featured":
         products = products.filter((p) => p.tags.includes("featured"));
         break;

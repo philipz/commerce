@@ -306,6 +306,23 @@ const productSeeds: ProductSeed[] = [
 
 export const mockProducts: Product[] = productSeeds.map(createProduct);
 
+export const homepageFeaturedHandles = [
+  "luxe-cotton-tee",
+  "everyday-oversized-tee",
+  "modern-crew-hoodie",
+];
+
+export const homepageCarouselHandles = [
+  "downtown-denim-jacket",
+  "sunrise-performance-leggings",
+  "heritage-runner-sneaker",
+  "northwind-parka",
+  "studio-relaxed-pant",
+  "artisan-leather-bag",
+  "skyline-sport-cap",
+  "midtown-knit-dress",
+];
+
 export const mockCollections: Collection[] = [
   {
     handle: "featured",
