@@ -1,6 +1,6 @@
 [
   {
-    "id": "gid://shopify/Page/1",
+    "id": "gid://commerce/Page/1",
     "title": "About Us",
     "handle": "about",
     "body": "<p>We are a small company that makes great products.</p>",

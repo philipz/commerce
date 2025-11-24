@@ -208,8 +208,8 @@ export async function getMenu(handle: string): Promise<Menu[]> {
   return menuData;
 }
 
-export async function getPage(handle: string): Promise<Page> {
-  return pagesData.find((p) => p.handle === handle) as Page;
+export async function getPage(handle: string): Promise<Page | undefined> {
+  return pagesData.find((p) => p.handle === handle) as Page | undefined;
 }
 
 export async function getPages(): Promise<Page[]> {

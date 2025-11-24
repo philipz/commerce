@@ -59,7 +59,7 @@ async function verifyCommerce() {
 
       // Add to Cart
       console.log(`Adding variant ${variantId} to cart...`);
-      const cartWithItem = await addToCart(cart.id, [
+      const cartWithItem = await addToCart([
         { merchandiseId: variantId, quantity: 1 },
       ]);
       console.log(`Cart line items: ${cartWithItem.lines.length}`);
@@ -77,11 +77,11 @@ async function verifyCommerce() {
         // For this test, we'll assume the first line is the one we just added.
 
         // Re-fetch cart to be sure (though addToCart returns it)
-        const fetchedCart = await getCart(cart.id);
+        const fetchedCart = await getCart();
         if (fetchedCart && fetchedCart.lines.length > 0) {
           const lineToUpdate = fetchedCart.lines[0];
           console.log(`Updating line ${lineToUpdate.id}...`);
-          const updatedCart = await updateCart(cart.id, [
+          const updatedCart = await updateCart([
             {
               id: lineToUpdate.id,
               merchandiseId: variantId,
@@ -94,7 +94,7 @@ async function verifyCommerce() {
 
           // Remove from Cart
           console.log(`Removing item from cart...`);
-          const emptyCart = await removeFromCart(cart.id, [lineToUpdate.id]);
+          const emptyCart = await removeFromCart([lineToUpdate.id]);
           console.log(
             `Cart line items after removal: ${emptyCart.lines.length}`,
           );
@@ -113,7 +113,9 @@ async function verifyCommerce() {
     console.log(`Fetched ${pages.length} pages.`);
     if (pages.length > 0) {
       const page = await getPage(pages[0].handle);
-      console.log(`Fetched page: ${page.title}`);
+      if (page) {
+        console.log(`Fetched page: ${page.title}`);
+      }
     }
 
     console.log("\nVerification completed successfully!");

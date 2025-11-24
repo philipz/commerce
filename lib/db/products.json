@@ -1,6 +1,6 @@
 [
   {
-    "id": "gid://shopify/Product/1",
+    "id": "gid://commerce/Product/1",
     "handle": "acme-t-shirt",
     "availableForSale": true,
     "title": "Acme T-Shirt",
@@ -8,12 +8,12 @@
     "descriptionHtml": "<p>A classic t-shirt for everyday wear.</p>",
     "options": [
       {
-        "id": "gid://shopify/ProductOption/1",
+        "id": "gid://commerce/ProductOption/1",
         "name": "Color",
         "values": ["Black", "White"]
       },
       {
-        "id": "gid://shopify/ProductOption/2",
+        "id": "gid://commerce/ProductOption/2",
         "name": "Size",
         "values": ["S", "M", "L"]
       }
@@ -30,7 +30,7 @@
     },
     "variants": [
       {
-        "id": "gid://shopify/ProductVariant/1",
+        "id": "gid://commerce/ProductVariant/1",
         "title": "Black / S",
         "availableForSale": true,
         "selectedOptions": [
@@ -49,7 +49,7 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/2",
+        "id": "gid://commerce/ProductVariant/2",
         "title": "Black / M",
         "availableForSale": true,
         "selectedOptions": [
@@ -68,7 +68,7 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/3",
+        "id": "gid://commerce/ProductVariant/3",
         "title": "Black / L",
         "availableForSale": true,
         "selectedOptions": [
@@ -109,7 +109,7 @@
     "updatedAt": "2023-01-01T00:00:00Z"
   },
   {
-    "id": "gid://shopify/Product/2",
+    "id": "gid://commerce/Product/2",
     "handle": "acme-hoodie",
     "availableForSale": true,
     "title": "Acme Hoodie",
@@ -117,7 +117,7 @@
     "descriptionHtml": "<p>Warm and cozy hoodie.</p>",
     "options": [
       {
-        "id": "gid://shopify/ProductOption/3",
+        "id": "gid://commerce/ProductOption/3",
         "name": "Size",
         "values": ["S", "M", "L"]
       }
@@ -134,7 +134,7 @@
     },
     "variants": [
       {
-        "id": "gid://shopify/ProductVariant/4",
+        "id": "gid://commerce/ProductVariant/4",
         "title": "S",
         "availableForSale": true,
         "selectedOptions": [
@@ -171,7 +171,7 @@
     "updatedAt": "2023-01-01T00:00:00Z"
   },
   {
-    "id": "gid://shopify/Product/3",
+    "id": "gid://commerce/Product/3",
     "handle": "acme-cup",
     "availableForSale": true,
     "title": "Acme Cup",
@@ -190,7 +190,7 @@
     },
     "variants": [
       {
-        "id": "gid://shopify/ProductVariant/5",
+        "id": "gid://commerce/ProductVariant/5",
         "title": "Default Title",
         "availableForSale": true,
         "selectedOptions": [],
