@@ -1,0 +1,18 @@
+[
+  {
+    "title": "All",
+    "path": "/search"
+  },
+  {
+    "title": "Clothing",
+    "path": "/search/clothing"
+  },
+  {
+    "title": "Accessories",
+    "path": "/search/accessories"
+  },
+  {
+    "title": "About",
+    "path": "/about"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "handle": "frontpage",
+    "title": "Featured Products",
+    "description": "Our best selling products.",
+    "seo": {
+      "title": "Featured Products",
+      "description": "Our best selling products."
+    },
+    "updatedAt": "2023-01-01T00:00:00Z",
+    "path": "/search/frontpage"
+  },
+  {
+    "handle": "clothing",
+    "title": "Clothing",
+    "description": "Apparel for everyone.",
+    "seo": {
+      "title": "Clothing",
+      "description": "Apparel for everyone."
+    },
+    "updatedAt": "2023-01-01T00:00:00Z",
+    "path": "/search/clothing"
+  },
+  {
+    "handle": "accessories",
+    "title": "Accessories",
+    "description": "Things to carry your things.",
+    "seo": {
+      "title": "Accessories",
+      "description": "Things to carry your things."
+    },
+    "updatedAt": "2023-01-01T00:00:00Z",
+    "path": "/search/accessories"
+  }
+]

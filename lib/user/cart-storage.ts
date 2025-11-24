@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
+import { Cart } from "lib/commerce/types";
 import path from "path";
-import { Cart } from "lib/shopify/types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "users");
 

@@ -1,12 +1,12 @@
 import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
-import { Menu } from "lib/shopify/types";
+import { getMenu } from "lib/commerce";
+import { Menu } from "lib/commerce/types";
 import Link from "next/link";
 import { Suspense } from "react";
+import { AccountButton } from "./account-button";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
-import { AccountButton } from "./account-button";
 
 const { SITE_NAME } = process.env;
 

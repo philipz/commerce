@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
-import { getCart } from "lib/shopify";
-import { createOrderFromCart } from "lib/user/order-actions";
 import { clearSavedCart } from "components/cart/cart-sync";
+import { getCart } from "lib/commerce";
+import { createOrderFromCart } from "lib/user/order-actions";
 import { NextResponse } from "next/server";
 
 export async function POST() {
