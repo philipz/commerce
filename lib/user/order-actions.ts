@@ -1,10 +1,13 @@
 "use server";
 
 import { auth } from "@/auth";
-import { Cart } from "lib/shopify/types";
-import { saveOrder } from "./storage";
+import { Cart } from "lib/commerce/types";
+import {
+  getBillingAddresses,
+  getShippingAddresses,
+  saveOrder,
+} from "./storage";
 import { Order, OrderItem } from "./types";
-import { getShippingAddresses, getBillingAddresses } from "./storage";
 
 /**
  * Create an order from the current cart

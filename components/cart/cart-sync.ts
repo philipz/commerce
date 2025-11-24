@@ -1,11 +1,11 @@
 "use server";
 
 import { auth } from "@/auth";
-import { Cart } from "lib/shopify/types";
+import { Cart } from "lib/commerce/types";
 import {
+  clearUserCart,
   getUserCart,
   saveUserCart,
-  clearUserCart,
 } from "lib/user/cart-storage";
 
 /**

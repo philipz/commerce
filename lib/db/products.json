@@ -1,0 +1,224 @@
+[
+  {
+    "id": "gid://commerce/Product/1",
+    "handle": "acme-t-shirt",
+    "availableForSale": true,
+    "title": "Acme T-Shirt",
+    "description": "A classic t-shirt for everyday wear.",
+    "descriptionHtml": "<p>A classic t-shirt for everyday wear.</p>",
+    "options": [
+      {
+        "id": "gid://commerce/ProductOption/1",
+        "name": "Color",
+        "values": ["Black", "White"]
+      },
+      {
+        "id": "gid://commerce/ProductOption/2",
+        "name": "Size",
+        "values": ["S", "M", "L"]
+      }
+    ],
+    "priceRange": {
+      "maxVariantPrice": {
+        "amount": "20.0",
+        "currencyCode": "USD"
+      },
+      "minVariantPrice": {
+        "amount": "20.0",
+        "currencyCode": "USD"
+      }
+    },
+    "variants": [
+      {
+        "id": "gid://commerce/ProductVariant/1",
+        "title": "Black / S",
+        "availableForSale": true,
+        "selectedOptions": [
+          {
+            "name": "Color",
+            "value": "Black"
+          },
+          {
+            "name": "Size",
+            "value": "S"
+          }
+        ],
+        "price": {
+          "amount": "20.0",
+          "currencyCode": "USD"
+        }
+      },
+      {
+        "id": "gid://commerce/ProductVariant/2",
+        "title": "Black / M",
+        "availableForSale": true,
+        "selectedOptions": [
+          {
+            "name": "Color",
+            "value": "Black"
+          },
+          {
+            "name": "Size",
+            "value": "M"
+          }
+        ],
+        "price": {
+          "amount": "20.0",
+          "currencyCode": "USD"
+        }
+      },
+      {
+        "id": "gid://commerce/ProductVariant/3",
+        "title": "Black / L",
+        "availableForSale": true,
+        "selectedOptions": [
+          {
+            "name": "Color",
+            "value": "Black"
+          },
+          {
+            "name": "Size",
+            "value": "L"
+          }
+        ],
+        "price": {
+          "amount": "20.0",
+          "currencyCode": "USD"
+        }
+      }
+    ],
+    "featuredImage": {
+      "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+      "altText": "Acme T-Shirt Black",
+      "width": 1000,
+      "height": 1000
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+        "altText": "Acme T-Shirt Black",
+        "width": 1000,
+        "height": 1000
+      }
+    ],
+    "seo": {
+      "title": "Acme T-Shirt",
+      "description": "A classic t-shirt for everyday wear."
+    },
+    "tags": ["t-shirt", "clothing"],
+    "updatedAt": "2023-01-01T00:00:00Z"
+  },
+  {
+    "id": "gid://commerce/Product/2",
+    "handle": "acme-hoodie",
+    "availableForSale": true,
+    "title": "Acme Hoodie",
+    "description": "Warm and cozy hoodie.",
+    "descriptionHtml": "<p>Warm and cozy hoodie.</p>",
+    "options": [
+      {
+        "id": "gid://commerce/ProductOption/3",
+        "name": "Size",
+        "values": ["S", "M", "L"]
+      }
+    ],
+    "priceRange": {
+      "maxVariantPrice": {
+        "amount": "50.0",
+        "currencyCode": "USD"
+      },
+      "minVariantPrice": {
+        "amount": "50.0",
+        "currencyCode": "USD"
+      }
+    },
+    "variants": [
+      {
+        "id": "gid://commerce/ProductVariant/4",
+        "title": "S",
+        "availableForSale": true,
+        "selectedOptions": [
+          {
+            "name": "Size",
+            "value": "S"
+          }
+        ],
+        "price": {
+          "amount": "50.0",
+          "currencyCode": "USD"
+        }
+      }
+    ],
+    "featuredImage": {
+      "url": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+      "altText": "Acme Hoodie",
+      "width": 1000,
+      "height": 1000
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+        "altText": "Acme Hoodie",
+        "width": 1000,
+        "height": 1000
+      }
+    ],
+    "seo": {
+      "title": "Acme Hoodie",
+      "description": "Warm and cozy hoodie."
+    },
+    "tags": ["hoodie", "clothing"],
+    "updatedAt": "2023-01-01T00:00:00Z"
+  },
+  {
+    "id": "gid://commerce/Product/3",
+    "handle": "acme-cup",
+    "availableForSale": true,
+    "title": "Acme Cup",
+    "description": "The perfect cup for your morning coffee.",
+    "descriptionHtml": "<p>The perfect cup for your morning coffee.</p>",
+    "options": [],
+    "priceRange": {
+      "maxVariantPrice": {
+        "amount": "15.0",
+        "currencyCode": "USD"
+      },
+      "minVariantPrice": {
+        "amount": "15.0",
+        "currencyCode": "USD"
+      }
+    },
+    "variants": [
+      {
+        "id": "gid://commerce/ProductVariant/5",
+        "title": "Default Title",
+        "availableForSale": true,
+        "selectedOptions": [],
+        "price": {
+          "amount": "15.0",
+          "currencyCode": "USD"
+        }
+      }
+    ],
+    "featuredImage": {
+      "url": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+      "altText": "Acme Cup",
+      "width": 1000,
+      "height": 1000
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1480&q=80",
+        "altText": "Acme Cup",
+        "width": 1000,
+        "height": 1000
+      }
+    ],
+    "seo": {
+      "title": "Acme Cup",
+      "description": "The perfect cup for your morning coffee."
+    },
+    "tags": ["cup", "accessories"],
+    "updatedAt": "2023-01-01T00:00:00Z"
+  }
+]

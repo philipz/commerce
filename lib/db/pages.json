@@ -1,0 +1,15 @@
+[
+  {
+    "id": "gid://commerce/Page/1",
+    "title": "About Us",
+    "handle": "about",
+    "body": "<p>We are a small company that makes great products.</p>",
+    "bodySummary": "We are a small company that makes great products.",
+    "seo": {
+      "title": "About Us",
+      "description": "Learn more about our company."
+    },
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-01T00:00:00Z"
+  }
+]
