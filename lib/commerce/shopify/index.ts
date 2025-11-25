@@ -6,12 +6,21 @@ import {
 import { isShopifyError } from "lib/type-guards";
 import { ensureStartsWith } from "lib/utils";
 import {
-  revalidateTag,
-  unstable_cacheTag as cacheTag,
   unstable_cacheLife as cacheLife,
+  unstable_cacheTag as cacheTag,
+  revalidateTag,
 } from "next/cache";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import {
+  Cart,
+  Collection,
+  Connection,
+  Image,
+  Menu,
+  Page,
+  Product,
+} from "../types";
 import {
   addToCartMutation,
   createCartMutation,
@@ -32,13 +41,6 @@ import {
   getProductsQuery,
 } from "./queries/product";
 import {
-  Cart,
-  Collection,
-  Connection,
-  Image,
-  Menu,
-  Page,
-  Product,
   ShopifyAddToCartOperation,
   ShopifyCart,
   ShopifyCartOperation,

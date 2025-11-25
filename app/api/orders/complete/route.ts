@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { getCart } from "lib/shopify";
+import { getCart } from "lib/commerce";
 import { createOrderFromCart } from "lib/user/order-actions";
 import { clearSavedCart } from "components/cart/cart-sync";
 import { NextResponse } from "next/server";
